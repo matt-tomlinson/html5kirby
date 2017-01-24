@@ -49,9 +49,11 @@ var player = {
 function animateSequence(xStart, yStart, numFrames) {
     ctx.drawImage(playerImage, xStart + 24 * player.frameCount, yStart, 21, 21, player.x, player.y, player.width, player.height);
     player.count++;
+    
     if (player.count % player.animateSpeed == 0) {
         player.frameCount++;
     }
+
     if (player.frameCount > numFrames) {
         player.frameCount = 0;
         if (player.inAir && player.facing == "right") {
@@ -67,9 +69,11 @@ function animateSequence(xStart, yStart, numFrames) {
 function animateFasterSequence(xStart, yStart, numFrames) {
     ctx.drawImage(playerImage, xStart + 24 * player.frameCount, yStart, 21, 21, player.x, player.y, player.width, player.height);
     player.count++;
+
     if (player.count % (player.animateSpeed / (player.animateSpeed / 3)) == 0) {
         player.frameCount++;
     }
+
     if (player.frameCount > numFrames) {
         player.frameCount = 0;
         if (player.inAir && player.facing == "right") {

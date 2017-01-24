@@ -1,13 +1,13 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
+
 ctx.webkitImageSmoothingEnabled = false;
 ctx.mozImageSmoothingEnabled = false;
 ctx.imageSmoothingEnabled = false;
+
 var width = canvas.width; //= window.innerWidth;
 var height = canvas.height; //= window.innerHeight;
-
 var fps = 60;
-
 var rightPressed = false;
 var leftPressed = false;
 var upPressed = false;
@@ -37,6 +37,7 @@ function draw() {
     for (i = 0; i < mapElements.length; i++) {
         resolveCollision(player, mapElements);
     }
+
     player.draw();
 }
 
