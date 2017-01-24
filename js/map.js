@@ -24,7 +24,7 @@ function drawBackground() {
     animateCount++;
 }
 
-function makeGround(x, y, width, height) {
+function makeGround(x, y, width) {
     var groundBlock = [];
 
     while (groundBlock.length < width) {
@@ -73,7 +73,7 @@ function makePlatform(x, y, width) {
 
     ctx.drawImage(tiles, 2 + 1 * tileWidth, 2 + 0 * tileHeight, tileWidth - 1, tileHeight - 1,
         x - tilesize, y, tilesize, tilesize);
-    ctx.drawImage(tiles, 2 + 2 * tileWidth, 2 + 0 * tileHeight, tileWidth - 1, tileHeight - 1,
+    ctx.drawImage(tiles, 2 + 17 * tileWidth, 2 + 0 * tileHeight, tileWidth - 1, tileHeight - 1,
         x + platform.length * tilesize, y, tilesize, tilesize);
 
     return platform;
@@ -81,8 +81,8 @@ function makePlatform(x, y, width) {
 
 function drawMap() {
     var mapElements = [];
-    platform1 = makePlatform(width - 10 * tilesize, height - 6 * tilesize, 4);
-    ground = makeGround(0, height - 2 * tilesize, width / tilesize);
+    platform1 = makePlatform(mapX(14), mapY(6), 4);
+    ground = makeGround(mapX(0), mapY(1), width / tilesize);
     mapElements.push(platform1);
     mapElements.push(ground);
 

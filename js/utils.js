@@ -3,6 +3,14 @@ function random(min, max) {
     return num;
 }
 
+function mapX(xCoord){
+    return tilesize * xCoord;
+}
+
+function mapY(yCoord){
+    return height - (yCoord * tilesize);
+}
+
 function resolveCollision(rect1, mapElements) {
     for (i = 0; i < mapElements.length; i++) {
         for (j = 0; j < mapElements[i].length; j++) {
