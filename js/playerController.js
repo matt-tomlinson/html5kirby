@@ -1,5 +1,5 @@
 function playerMovement() {
-    if (player.dx == 0 && player.dy == player.gravity) {
+    if (player.dy == player.gravity || player.dy == 0) {
         player.inAir = false;
     } else {
         player.inAir = true;

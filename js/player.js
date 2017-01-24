@@ -6,13 +6,13 @@ var idleStartY = 3;
 var player = {
     color: "#00A",
     x: width / 2,
-    y: height - 50,
+    y: height / 1.8,
     dx: 0,
     dy: 0,
     gravity: 0.3,
     width: 40,
     height: 40,
-    speed: 2,
+    speed: 3,
     facing: "right",
     isMoving: false,
     inAir: false,
@@ -23,10 +23,10 @@ var player = {
     draw: function() {
         switch (player.action) {
             case "walkRight":
-                animateSequence(9, 53, 9);
+                animateFasterSequence(9, 53, 9);
                 break;
             case "walkLeft":
-                animateSequence(298, 53, 9);
+                animateFasterSequence(298, 53, 9);
                 break;
             case "jumpRight":
                 animateSequence(10, 131, 8);
@@ -59,9 +59,26 @@ function animateSequence(xStart, yStart, numFrames) {
         } else if (player.inAir && player.facing == "left") {
             player.action = "fallLeft";
         } else {
-            player.action = "idle"; /////this is where I left off
+            player.action = "idle";
         }
+    }
+}
 
+function animateFasterSequence(xStart, yStart, numFrames) {
+    ctx.drawImage(playerImage, xStart + 24 * player.frameCount, yStart, 21, 21, player.x, player.y, player.width, player.height);
+    player.count++;
+    if (player.count % (player.animateSpeed / (player.animateSpeed / 3)) == 0) {
+        player.frameCount++;
+    }
+    if (player.frameCount > numFrames) {
+        player.frameCount = 0;
+        if (player.inAir && player.facing == "right") {
+            player.action = "fallRight";
+        } else if (player.inAir && player.facing == "left") {
+            player.action = "fallLeft";
+        } else {
+            player.action = "idle";
+        }
     }
 }
 

@@ -1,8 +1,11 @@
+var tileHeight = 64;
+var tileWidth = 64;
+
 function Tile() {
     this.x = width / 2;
     this.y = height / 2;
-    this.width = 64;
-    this.height = 64;
+    this.width = tileWidth;
+    this.height = tileHeight;
     this.collide = true;
     this.xType = 0;
     this.yType = 0;
