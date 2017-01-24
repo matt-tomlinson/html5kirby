@@ -24,6 +24,24 @@ function drawBackground() {
     animateCount++;
 }
 
+function makeGround(x, y, width, height) {
+    var groundBlock = [];
+
+    while (groundBlock.length < width) {
+        var platformPiece = new Tile();
+        groundBlock.push(platformPiece);
+    }
+
+    for (i = 0; i < groundBlock.length; i++) {
+        groundBlock[i].xType = 2;
+        groundBlock[i].yType = 2;
+        groundBlock[i].x = x + tilesize * i;
+        groundBlock[i].y = y;
+    }
+
+    return groundBlock;
+}
+
 function makePlatform(x, y, width) {
     var platform = [];
 
@@ -63,10 +81,10 @@ function makePlatform(x, y, width) {
 
 function drawMap() {
     var mapElements = [];
-    platform1 = makePlatform(width / 3, height - 100, 10);
-    platform2 = makePlatform(width / 6, height - 150, 5);
+    platform1 = makePlatform(width - 10 * tilesize, height - 6 * tilesize, 4);
+    ground = makeGround(0, height - 2 * tilesize, width / tilesize);
     mapElements.push(platform1);
-    mapElements.push(platform2);
+    mapElements.push(ground);
 
     for (i = 0; i < mapElements.length; i++) {
         for (j = 0; j < mapElements[i].length; j++) {
