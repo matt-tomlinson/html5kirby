@@ -1,12 +1,9 @@
 var playerImage = new Image();
 playerImage.src = "assets/kirby.png";
-var idleStartX = 8;
-var idleStartY = 3;
 
 var player = {
-    color: "#00A",
-    x: width / 2,
-    y: height / 1.8,
+    x: width / 12,
+    y: height / 1.1,
     dx: 0,
     dy: 0,
     gravity: 0.3,
@@ -41,7 +38,7 @@ var player = {
                 animateSequence(520, 131, 0);
                 break;
             default:
-                animateSpecialSequence(idleStartX, idleStartY, 15, player.facing);
+                animateSpecialSequence(8, 3, 15, player.facing);
         }
     }
 };
@@ -49,7 +46,7 @@ var player = {
 function animateSequence(xStart, yStart, numFrames) {
     ctx.drawImage(playerImage, xStart + 24 * player.frameCount, yStart, 21, 21, player.x, player.y, player.width, player.height);
     player.count++;
-    
+
     if (player.count % player.animateSpeed == 0) {
         player.frameCount++;
     }

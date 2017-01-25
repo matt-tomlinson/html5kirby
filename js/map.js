@@ -42,6 +42,24 @@ function makeGround(x, y, width) {
     return groundBlock;
 }
 
+function makeTileLine(x, y, typeX, typeY, width) {
+    var tileLine = [];
+
+    while (tileLine.length < width) {
+        var tileLinePiece = new Tile();
+        tileLine.push(tileLinePiece);
+    }
+
+    for (i = 0; i < tileLine.length; i++) {
+        tileLine[i].xType = typeX;
+        tileLine[i].yType = typeY;
+        tileLine[i].x = x + tilesize * i;
+        tileLine[i].y = y;
+    }
+
+    return tileLine;
+}
+
 function makePlatform(x, y, width) {
     var platform = [];
 
@@ -79,12 +97,91 @@ function makePlatform(x, y, width) {
     return platform;
 }
 
+function makeTile(x, y, xtype, ytype, collide, arrayOfTiles) {
+    var newTile = new Tile();
+    newTile.x = mapX(x);
+    newTile.y = mapY(y);
+    newTile.xType = xtype;
+    newTile.yType = ytype;
+    newTile.collide = collide;
+
+    arrayOfTiles.push(newTile);
+
+    return arrayOfTiles;
+}
+
+function makeTiles() {
+    var madeTiles = [];
+
+    madeTiles = makeTile(1, 2, 15, 0, false, madeTiles); // flower
+    madeTiles = makeTile(5, 2, 14, 0, false, madeTiles); // plant
+    madeTiles = makeTile(6, 2, 13, 0, false, madeTiles); // bush
+
+    //madeTiles = makeTile(17, 10, 6, 2, true, madeTiles); // marker
+    madeTiles = makeTile(29, 2, 14, 3, true, madeTiles); //
+    madeTiles = makeTile(28, 2, 13, 3, true, madeTiles); //bottom
+    madeTiles = makeTile(27, 2, 12, 3, true, madeTiles); //
+    madeTiles = makeTile(29, 3, 11, 3, true, madeTiles);
+    madeTiles = makeTile(28, 3, 10, 3, true, madeTiles);
+    madeTiles = makeTile(27, 3, 9, 3, true, madeTiles);
+    madeTiles = makeTile(29, 4, 11, 3, true, madeTiles);
+    madeTiles = makeTile(28, 4, 10, 3, true, madeTiles);
+    madeTiles = makeTile(27, 4, 9, 3, true, madeTiles);
+    madeTiles = makeTile(29, 5, 11, 3, true, madeTiles);
+    madeTiles = makeTile(28, 5, 10, 3, true, madeTiles);
+    madeTiles = makeTile(27, 5, 9, 3, true, madeTiles);
+    madeTiles = makeTile(29, 6, 11, 3, true, madeTiles);
+    madeTiles = makeTile(28, 6, 10, 3, true, madeTiles);
+    madeTiles = makeTile(27, 6, 9, 3, true, madeTiles);
+    madeTiles = makeTile(29, 7, 11, 3, true, madeTiles);
+    madeTiles = makeTile(28, 7, 10, 3, true, madeTiles);
+    madeTiles = makeTile(27, 7, 9, 3, true, madeTiles);
+    madeTiles = makeTile(29, 8, 11, 3, true, madeTiles);
+    madeTiles = makeTile(28, 8, 10, 3, true, madeTiles);
+    madeTiles = makeTile(27, 8, 9, 3, true, madeTiles);
+    madeTiles = makeTile(29, 9, 8, 3, true, madeTiles); //
+    madeTiles = makeTile(28, 9, 7, 3, true, madeTiles); // top
+    madeTiles = makeTile(27, 9, 6, 3, true, madeTiles); //
+
+    madeTiles = makeTile(26, 2, 7, 2, true, madeTiles);
+    madeTiles = makeTile(25, 2, 8, 2, true, madeTiles);
+    madeTiles = makeTile(24, 2, 9, 2, true, madeTiles);
+    madeTiles = makeTile(23, 2, 10, 2, true, madeTiles);
+
+    madeTiles = makeTile(23, 3, 9, 2, true, madeTiles);
+    madeTiles = makeTile(24, 3, 13, 2, true, madeTiles);
+    madeTiles = makeTile(25, 3, 14, 2, true, madeTiles);
+    madeTiles = makeTile(26, 3, 8, 2, true, madeTiles);
+
+    madeTiles = makeTile(23, 4, 7, 2, true, madeTiles);
+    madeTiles = makeTile(24, 4, 11, 2, true, madeTiles);
+    madeTiles = makeTile(25, 4, 12, 2, true, madeTiles);
+    madeTiles = makeTile(26, 4, 10, 2, true, madeTiles);
+
+    madeTiles = makeTile(26, 5, 8, 2, true, madeTiles);
+    madeTiles = makeTile(25, 5, 7, 2, true, madeTiles);
+    madeTiles = makeTile(24, 5, 9, 2, true, madeTiles);
+    madeTiles = makeTile(23, 5, 10, 2, true, madeTiles);
+
+    madeTiles = makeTile(17, 9, 6, 1, false, madeTiles); // pillar top
+    for (i = 0; i < 7; i++) {
+        madeTiles = makeTile(17, 9 - i, 7, 1, false, madeTiles);
+    }
+    madeTiles = makeTile(17, 2, 8, 1, false, madeTiles);
+
+    return madeTiles;
+}
+
 function drawMap() {
     var mapElements = [];
-    platform1 = makePlatform(mapX(14), mapY(6), 4);
+    platform1 = makePlatform(mapX(10), mapY(6), 4);
     ground = makeGround(mapX(0), mapY(1), width / tilesize);
-    mapElements.push(platform1);
+    tileLine1 = makeTileLine(mapX(17), mapY(10), 6, 2, 13);
+    madeTiles = makeTiles();
+    mapElements.push(madeTiles);
+    mapElements.push(tileLine1);
     mapElements.push(ground);
+    mapElements.push(platform1);
 
     for (i = 0; i < mapElements.length; i++) {
         for (j = 0; j < mapElements[i].length; j++) {

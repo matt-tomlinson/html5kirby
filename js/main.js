@@ -34,10 +34,8 @@ function draw() {
     clearCanvas();
     drawBackground();
     mapElements = drawMap();
-    for (i = 0; i < mapElements.length; i++) {
-        resolveCollision(player, mapElements);
-    }
-
+    resolveCollision(player, mapElements);
+    
     player.draw();
 }
 

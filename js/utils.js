@@ -15,7 +15,7 @@ function resolveCollision(rect1, mapElements) {
     for (i = 0; i < mapElements.length; i++) {
         for (j = 0; j < mapElements[i].length; j++) {
             var rect2 = mapElements[i][j];
-            if (rect2.collide) {
+            if (rect2.collide && rect1.dy >= 0) {
                 var left1 = rect1.x;
                 var right1 = rect1.x + rect1.width;
                 var top1 = rect1.y;
