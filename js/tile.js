@@ -6,7 +6,7 @@ function Tile() {
     this.y = height / 2;
     this.width = tileWidth;
     this.height = tileHeight;
-    this.collide = true;
+    this.collide = 1;
     this.xType = 0;
     this.yType = 0;
 }
