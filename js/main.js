@@ -16,7 +16,7 @@ var spacePressed = false;
 
 window.addEventListener("keydown", function(e) { // prevent key scrolling
     // space and arrow keys
-    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+    if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
         e.preventDefault();
     }
 }, false);
@@ -26,22 +26,21 @@ function clearCanvas() {
 }
 
 function update() {
-    playerMovement();
-    playerAction();
-}
-
-function draw() {
     clearCanvas();
     drawBackground();
     mapElements = drawMap();
-    resolveCollision(player, mapElements);
-    
+    playerMovement(mapElements);
+    //resolveCollision(player, mapElements);
+
     player.draw();
+    //playerAction();
 }
+
+function draw() {}
 
 function main() {
     update();
-    draw();
+    //draw();
 }
 
 setInterval(main, 1000 / fps);

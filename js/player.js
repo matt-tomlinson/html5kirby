@@ -7,6 +7,7 @@ var player = {
     dx: 0,
     dy: 0,
     gravity: 0.3,
+    friction: 0.8,
     width: 40,
     height: 40,
     speed: 3,
@@ -17,6 +18,8 @@ var player = {
     frameCount: 0,
     animateSpeed: 6,
     count: 0,
+    jumping: false,
+    grounded: false,
     draw: function() {
         switch (player.action) {
             case "walkRight":
@@ -53,9 +56,9 @@ function animateSequence(xStart, yStart, numFrames) {
 
     if (player.frameCount > numFrames) {
         player.frameCount = 0;
-        if (player.inAir && player.facing == "right") {
+        if (!player.grounded && player.facing == "right") {
             player.action = "fallRight";
-        } else if (player.inAir && player.facing == "left") {
+        } else if (!player.grounded && player.facing == "left") {
             player.action = "fallLeft";
         } else {
             player.action = "idle";
@@ -73,9 +76,9 @@ function animateFasterSequence(xStart, yStart, numFrames) {
 
     if (player.frameCount > numFrames) {
         player.frameCount = 0;
-        if (player.inAir && player.facing == "right") {
+        if (!player.grounded && player.facing == "right") {
             player.action = "fallRight";
-        } else if (player.inAir && player.facing == "left") {
+        } else if (!player.grounded && player.facing == "left") {
             player.action = "fallLeft";
         } else {
             player.action = "idle";

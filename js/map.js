@@ -117,7 +117,6 @@ function makeTiles() {
     madeTiles = makeTile(5, 4, 6, 2, 2, madeTiles); // plant
     madeTiles = makeTile(6, 2, 13, 0, 0, madeTiles); // bush
 
-    //madeTiles = makeTile(17, 10, 6, 2, true, madeTiles); // marker
     madeTiles = makeTile(29, 2, 14, 3, 1, madeTiles); //
     madeTiles = makeTile(28, 2, 13, 3, 1, madeTiles); //bottom
     madeTiles = makeTile(27, 2, 12, 3, 1, madeTiles); //

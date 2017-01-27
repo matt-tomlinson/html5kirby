@@ -56,7 +56,6 @@ function playerMovement() {
     } else if (player.x <= 0) {
         player.x = 0;
     }
-
     if (player.y + player.height >= height) {
         player.y = height - player.height;
         player.dy = 0;
@@ -71,5 +70,5 @@ function playerMovement() {
 }
 
 function playerAction() {
-    //if (spacePressed) {}
+    if (spacePressed) {}
 }
