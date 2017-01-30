@@ -2,7 +2,7 @@ var playerImage = new Image();
 playerImage.src = "assets/kirby.png";
 
 var player = {
-    x: width / 12,
+    x: width / 20,
     y: height / 1.1,
     dx: 0,
     dy: 0,
@@ -56,9 +56,9 @@ function animateSequence(xStart, yStart, numFrames) {
 
     if (player.frameCount > numFrames) {
         player.frameCount = 0;
-        if (!player.grounded && player.facing == "right") {
+        if (!player.grounded && player.jumping && player.facing == "right") {
             player.action = "fallRight";
-        } else if (!player.grounded && player.facing == "left") {
+        } else if (!player.grounded && player.jumping && player.facing == "left") {
             player.action = "fallLeft";
         } else {
             player.action = "idle";
@@ -76,9 +76,9 @@ function animateFasterSequence(xStart, yStart, numFrames) {
 
     if (player.frameCount > numFrames) {
         player.frameCount = 0;
-        if (!player.grounded && player.facing == "right") {
+        if (!player.grounded && player.jumping && player.facing == "right") {
             player.action = "fallRight";
-        } else if (!player.grounded && player.facing == "left") {
+        } else if (!player.grounded && player.jumping && player.facing == "left") {
             player.action = "fallLeft";
         } else {
             player.action = "idle";

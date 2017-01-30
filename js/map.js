@@ -113,9 +113,12 @@ function makeTile(x, y, xtype, ytype, collide, arrayOfTiles) {
 function makeTiles() {
     var madeTiles = [];
 
-    madeTiles = makeTile(1, 2, 15, 0, 0, madeTiles); // flower
-    madeTiles = makeTile(5, 4, 6, 2, 2, madeTiles); // plant
+    madeTiles = makeTile(2, 11, 15, 0, 0, madeTiles); // flower
+    madeTiles = makeTile(5, 4, 6, 2, 2, madeTiles); // marker
+    madeTiles = makeTile(6, 4, 6, 2, 2, madeTiles); //
+    madeTiles = makeTile(7, 4, 6, 2, 2, madeTiles); //
     madeTiles = makeTile(6, 2, 13, 0, 0, madeTiles); // bush
+    madeTiles = makeTile(12, 2, 14, 0, 0, madeTiles); //
 
     madeTiles = makeTile(29, 2, 14, 3, 1, madeTiles); //
     madeTiles = makeTile(28, 2, 13, 3, 1, madeTiles); //bottom
@@ -173,7 +176,8 @@ function makeTiles() {
 
 function drawMap() {
     var mapElements = [];
-    platform1 = makePlatform(mapX(10), mapY(6), 4);
+    platform1 = makePlatform(mapX(10), mapY(7), 4);
+    platform2 = makePlatform(mapX(1), mapY(10), 6);
     ground = makeGround(mapX(0), mapY(1), width / tilesize);
     tileLine1 = makeTileLine(mapX(17), mapY(10), 6, 2, 13);
     madeTiles = makeTiles();
@@ -181,6 +185,7 @@ function drawMap() {
     mapElements.push(tileLine1);
     mapElements.push(ground);
     mapElements.push(platform1);
+    mapElements.push(platform2);
 
     for (i = 0; i < mapElements.length; i++) {
         for (j = 0; j < mapElements[i].length; j++) {

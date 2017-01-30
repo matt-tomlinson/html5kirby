@@ -8,7 +8,6 @@ function playerMovement(mapElements) {
         if (player.grounded) {
             player.action = "walkRight";
         }
-        player.action = "walkRight";
         player.facing = "right";
     }
     if (leftPressed) {
@@ -45,22 +44,38 @@ function playerMovement(mapElements) {
     for (i = 0; i < mapElements.length; i++) {
         for (j = 0; j < mapElements[i].length; j++) {
             var block = mapElements[i][j];
-            var dir = colCheck(player, block);
+            if (block.collide != 0) {
+                var dir = colCheck(player, block);
 
-            if (dir === "l" || dir === "r") {
-                player.dx = 0;
-                player.jumping = false;
-            } else if (dir === "b") {
-                player.grounded = true;
-                player.jumping = false;
-            } else if (dir === "t") {
-                player.dy = 0;
+                if (dir === "l" || dir === "r") {
+                    player.dx = 0;
+                    player.jumping = false;
+                } else if (dir === "b") {
+                    player.grounded = true;
+                    player.jumping = false;
+                } else if (dir === "t") {
+                    player.dy = 0;
+                }
             }
         }
     }
 
     if (player.grounded) {
         player.dy = 0;
+    }
+    
+    //Keep player within canvas
+    if (player.x + player.width >= width) {
+        player.x = width - player.width;
+    } else if (player.x <= 0) {
+        player.x = 0;
+    }
+    if (player.y + player.height >= height) {
+        player.y = height - player.height;
+        player.dy = 0;
+        player.dx = 0;
+    } else if (player.y <= 0) {
+        player.y = 0;
     }
 
     player.x += player.dx;

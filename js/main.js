@@ -30,7 +30,6 @@ function update() {
     drawBackground();
     mapElements = drawMap();
     playerMovement(mapElements);
-    //resolveCollision(player, mapElements);
 
     player.draw();
     //playerAction();
