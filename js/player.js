@@ -2,8 +2,8 @@ var playerImage = new Image();
 playerImage.src = "assets/kirby.png";
 
 var player = {
-    x: width / 20,
-    y: height / 1.1,
+    x: width / 1.7,
+    y: height / 2.2,
     dx: 0,
     dy: 0,
     gravity: 0.3,
