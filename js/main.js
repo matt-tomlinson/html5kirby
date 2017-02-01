@@ -30,7 +30,9 @@ function update() {
     drawBackground();
     mapElements = drawMap();
     playerMovement(mapElements);
-
+    mapItems = drawItems();
+    mapItems = itemPlayerCollision(mapItems);
+    itemMapCollision(mapItems, mapElements);
     player.draw();
     //playerAction();
 }

@@ -174,31 +174,6 @@ function makeTiles() {
     return madeTiles;
 }
 
-function makeItem(x, y, xtype, ytype, arrayOfItems) {
-    var newItem = new Item();
-    newItem.x = mapX(x);
-    newItem.y = mapY(y);
-    newItem.xType = xtype;
-    newItem.yType = ytype;
-
-    arrayOfItems.push(newItem);
-
-    return arrayOfItems;
-}
-
-function makeItems() {
-    var items = [];
-
-    //items = makeItem(12, 9, 8, 0, items); // coin (hopefully)
-    for (i = 0; i < 10; i++) {
-        for (j = 0; j < 6; j++) {
-            items = makeItem(i + 20, j + 11, i, j, items);
-        }
-    }
-
-    return items;
-}
-
 function drawMap() {
     var mapElements = [];
     platform1 = makePlatform(mapX(10), mapY(7), 4);
@@ -206,14 +181,12 @@ function drawMap() {
     ground = makeGround(mapX(0), mapY(1), width / tilesize);
     tileLine1 = makeTileLine(mapX(17), mapY(10), 6, 2, 13);
     madeTiles = makeTiles();
-    madeItems = makeItems();
 
     mapElements.push(madeTiles);
     mapElements.push(tileLine1);
     mapElements.push(ground);
     mapElements.push(platform1);
     mapElements.push(platform2);
-    mapElements.push(madeItems);
 
     for (i = 0; i < mapElements.length; i++) {
         for (j = 0; j < mapElements[i].length; j++) {
