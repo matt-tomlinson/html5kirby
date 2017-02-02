@@ -26,22 +26,23 @@ function clearCanvas() {
 }
 
 function update() {
-    clearCanvas();
-    drawBackground();
     mapElements = drawMap();
     playerMovement(mapElements);
     mapItems = drawItems();
     mapItems = itemPlayerCollision(mapItems);
     itemMapCollision(mapItems, mapElements);
-    player.draw();
-    //playerAction();
 }
 
-function draw() {}
+function draw() {
+    clearCanvas();
+    drawBackground();
+    player.draw();
+    drawEnemies();
+}
 
 function main() {
+    draw();
     update();
-    //draw();
 }
 
 setInterval(main, 1000 / fps);
